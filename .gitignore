@@ -1,0 +1,4 @@
+molgenis-emx2/
+projecten/*/data/
+.env
+*.log

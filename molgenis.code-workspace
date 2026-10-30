@@ -1,0 +1,22 @@
+{
+  "folders": [
+    { "path": "." }
+  ],
+  "settings": {
+    "task.allowAutomaticTasks": "on",
+    "java.compile.nullAnalysis.mode": "disabled"
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Update molgenis-emx2",
+        "type": "shell",
+        "command": "git pull --ff-only",
+        "options": { "cwd": "${workspaceFolder}/molgenis-emx2" },
+        "runOptions": { "runOn": "folderOpen" },
+        "presentation": { "reveal": "always" }
+      }
+    ]
+  }
+}
