@@ -1,0 +1,112 @@
+# Source EBpatients -> target Variants (one row per patient with a gene in `gen`).
+# Assumes `gen` = the main affected gene and allel1/allel2 = cDNA notation of the two alleles.
+# Both are inferences from labels (source has no descriptions).
+
+source:
+  file: EBpatients.csv
+
+target:
+  file: Variants.csv
+  table: Variants
+
+emit_if:
+  any_present: [gen]
+
+x_gene_to_transcript: &g2t
+  KRT5: "NM_000424.4"
+  KRT14: "NM_000526.5"
+  PLEC: "NM_000445.5"
+  KLHL24: "NM_017644.3"
+  DST: "NM_001723.7"
+  EXPH5: "NM_015065.3"
+  SLAC2B: "NM_015065.3"
+  CD151: "NM_004357.5"
+  TSPAN24: "NM_004357.5"
+  LAMA3: "NM_000227.6"
+  LAMB3: "NM_000228.3"
+  LAMC2: "NM_005562.3"
+  COL17A1: "NM_000494.4"
+  ITGA6: "NM_000210.4"
+  ITGB4: "NM_001005731.3"
+  ITGA3: "NM_002204.4"
+  COL7A1: "NM_000094.4"
+  FERMT1: "NM_017671.5"
+
+mappings:
+  - source: patientCode
+    target: individual
+    transform: link_key
+
+  - target: kindOfGene
+    transform: constant
+    value: "Main affected gene"
+    confidence: low
+    note: Assumes `gen` is the main gene. gen1-gen4 may be panel/tested genes and are NOT turned into "secondary" variants (would create false records).
+
+  - source: gen
+    target: affectedGene
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: default
+    default: "Other Affected Gene"
+    values:
+      KRT5: KRT5
+      KRT14: KRT14
+      PLEC: PLEC
+      KLHL24: KLHL24
+      DST: DST
+      EXPH5: "EXPH5 (syn SLAC2B)"
+      SLAC2B: "EXPH5 (syn SLAC2B)"
+      CD151: "CD151 (syn TSPAN24)"
+      TSPAN24: "CD151 (syn TSPAN24)"
+      LAMA3: LAMA3
+      LAMB3: LAMB3
+      LAMC2: LAMC2
+      COL17A1: COL17A1
+      ITGA6: ITGA6
+      ITGB4: ITGB4
+      ITGA3: ITGA3
+      COL7A1: COL7A1
+      FERMT1: FERMT1
+    confidence: medium
+
+  - source: gen
+    target: detailsOfOtherAffectedGene
+    transform: copy
+    when_target: {affectedGene: "Other Affected Gene"}
+    confidence: high
+
+  - source: gen
+    target: referenceSequence
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: default
+    default: "Other reference sequence"
+    values: *g2t
+    confidence: medium
+    note: Transcript derived from gene via the ontology pairing (gene k -> transcript k). Transcript version actually used by the lab is unknown.
+
+  - source: gen
+    target: detailsOfOtherReferenceSequence
+    transform: copy
+    when_target: {referenceSequence: "Other reference sequence"}
+    confidence: medium
+
+  - source: allel1
+    target: cdnaofThisAffectedGene
+    transform: copy
+    confidence: low
+    note: Assumes allel1 holds the c. notation (aminozuurNiveau1 is the protein level and has no target).
+
+  - source: allel2
+    target: cdnaOfAllele2
+    transform: copy
+    confidence: low
+
+  - target: isTheSecondAlleleForThisGeneDifferent
+    transform: differs
+    sources: [allel1, allel2]
+    confidence: low
+    note: True if both alleles are filled and differ; empty allel2 => false. Homozygous vs hemizygous vs unknown is not distinguishable; source `genotype` might help.
+
+gaps: []

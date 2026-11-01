@@ -1,0 +1,149 @@
+# =============================================================================
+# EB registry ETL - pipeline-level configuration
+# Source: EBpatients (1 flat table, 130 columns)  ->  Target: Individuals, Biopsies, Variants
+#
+# STATUS: Phase 1 draft, built from schema metadata only. The source schema has no
+# column types, value lists or descriptions, so every value mapping in the job files
+# is a HYPOTHESIS to be corrected after a local value-frequency profile.
+# =============================================================================
+
+pipeline:
+  name: eb_registry_etl
+  source_encoding: latin-1          # source_schema.csv is ISO-8859-1; confirm for the data file
+  csv_delimiter: ","
+  empty_values: ["", "NA", "N/A", "#N/A", "null"]   # treated as missing after strip()
+
+  schemas:
+    source: schemas/source_schema.csv
+    target: schemas/target_schema.csv
+    ontology_dir: schemas/target_ontology
+
+  # Ontology CSVs have `name` (numeric code / camelCase key) and `label` (readable).
+  # The job files are written with LABELS. DECISION NEEDED: does the EMX2 import
+  # expect `name` or `label` in ontology columns? Flip this switch once confirmed.
+  ontology_output: label            # label | name
+
+  # Individuals.patientCode (auto_id) is the join key for Biopsies.individual and
+  # Variants.individual. The crosswalk (source patientCode -> target key) is
+  # CONFIDENTIAL: keep it local, never share it.
+  key_registry:
+    file: .local/key_crosswalk.csv
+    source_key: patientCode
+    format: numbers
+    length: 8
+
+  jobs:                             # order matters: Individuals first (FK target)
+    - individuals.yaml
+    - biopsies_if.yaml
+    - biopsies_em.yaml
+    - variants.yaml
+
+  output_dir: output/
+
+# -----------------------------------------------------------------------------
+# Transform vocabulary the engine must implement (used by the job files)
+# -----------------------------------------------------------------------------
+#  copy              value as-is (stripped)
+#  constant          fixed `value`; optional `when_present: [cols]`
+#  parse_date        input_format (str or list) -> output_format
+#  to_bool           true_values / false_values -> true / false
+#  to_int            integer parse
+#  lookup            `values` map (case_insensitive); on_unmapped: null | error | default
+#  coalesce          try `steps` (each a mapping fragment) until one gives a value
+#  rules             ordered `rules: [{when: {col: present|absent|[values]}, value: X}]`
+#  any_present       true if any of `sources` is non-empty (bool)
+#  count_present     number of non-empty `sources`
+#  differs           true if the non-empty `sources` are not all equal (bool)
+#  paired_lookup     scan name_columns for a protein matching `match` (aliases, exact
+#                    after lower/strip); take the paired value_column through `values`
+#  paired_other      names in name_columns matching none of the aliases used by this
+#                    job's paired_lookup mappings (text); with `as: status` returns
+#                    the paired status of the first such name
+#  list_from_target  build an ontology_array from the target columns in `labels`
+#                    that are non-empty
+#  link_key          look up / create the target key for the source patient key
+#  concat            join labelled non-empty `sources` (free text, privacy-gated)
+# Common keys: when (source condition), when_target (condition on target columns
+# already produced), enabled (default true), confidence (high|medium|low), note.
+# -----------------------------------------------------------------------------
+
+# Direct identifiers: never copied to any output and never profiled.
+never_export:
+  - achternaam
+  - voorvoegsel
+  - voornaam
+  - umcgNr
+  - bsn
+  - straat
+  - postcode
+  - woonplaats
+  - telefoonnummer
+  - mobiel
+  - email
+  - brief
+  - dossiernummerKg
+
+# Free-text columns: excluded from profile output; mapped only if explicitly enabled.
+free_text_columns:
+  - famAnamnese
+  - distributie
+  - overigeHuidafwijkingen
+  - tractusDigestivus
+  - overigeLichaamsafwijkingen
+  - nagelafwijking
+  - lmVerslag
+  - emVerslag
+  - ifVerslag
+  - opmerkingen
+  - mutatieOpmerkingen
+
+# -----------------------------------------------------------------------------
+# Source columns NOT mapped to any enabled target field. Every one of the 130
+# source columns must appear here or in a job file (checked by validate_config.py).
+# -----------------------------------------------------------------------------
+unmapped:
+  - reason: direct_identifier
+    note: Personal identifiers / contact data. Target has no field; do not migrate.
+    columns: [achternaam, voorvoegsel, voornaam, umcgNr, bsn, straat, postcode, woonplaats,
+              telefoonnummer, mobiel, email, brief, dossiernummerKg]
+
+  - reason: no_target_field
+    note: Clinical phenotype / organ involvement. The target has no phenotype fields (candidate schema extension).
+    columns: [overigeHuidafwijkingen, tractusLocomotorius, tractusDigestivus, tractusGenitoUretralis,
+              overigeLichaamsafwijkingen, blaren, milia, verlitteking, atrofie, albopapuloid, pigmentatie,
+              hypergranulatie, clas, nagelafwi, alopecia, hyperkeratose, keratoderma, fragieleHuid, purpura,
+              oraleErosies, oraleLittekens, microstomie, ankyloglossie, enameldefecten, anoHypodontie, caries,
+              anemie, groeiretardatie, verbetering, handBlaar, handHyperkeratose, voetBlaar,
+              voetHyperkeratose, temperatuurInvloed, nagelafwijking]
+
+  - reason: no_target_field
+    note: Possible hints for EBS/JEB/DEB subtype (distribution, onset, generalised, herpetiform). Needs clinical rules; not auto-derived.
+    columns: [distributie, onset, gegeneraliseerd, herpetiform]
+
+  - reason: no_target_field
+    note: Follow-up, referral, family history, cause of death. Target has only a LongitudinalAssessments heading, no fields.
+    columns: [datumLaatsteBezoek, leeftijdBijLaatsteBezoek, verwijzer, plaatsVerwijzer, famAnamnese, redenVanOverlijden]
+
+  - reason: no_target_field
+    note: Light microscopy has no BiopsyTypes entry (only Immunofluorescence, Electron microscopy). Lab numbers are indirect identifiers.
+    columns: [lmNummer, lmVerslag, retentieBasaleCellen]
+
+  - reason: no_target_field
+    note: Variant detail without a target field (protein level, exon, mutation type, origin, parental genotypes, revertant, polymorphisms, genotype).
+    columns: [aminozuurNiveau1, exonMutatie1, typeMutatie1, origineMutatie1,
+              aminozuurNiveau2, exonMutatie2, typeMutatie2, origineMutatie2,
+              polymorfismen, genotypeVader, genotypeMoeder, mutatieOpmerkingen,
+              revertant, revertantMechanisme, genotype]
+
+  - reason: no_target_field
+    note: Family DNA testing; no target field.
+    columns: [dnaFamilieleden, welkeFamilieleden]
+
+  - reason: ambiguous
+    note: Meaning cannot be derived from the label. See docs/schema_analysis.md section 5.
+    columns: [dnaBij, gen1, afgerond1, gen2, afgerond2, gen3, afgerond3, gen4, afgerond4,
+              mutatie, mutatieGevonden, emAfs, emSbdp, leeftijd, selecteer, ifCol7Lh7_2CoPlus]
+
+  - reason: free_text_privacy
+    note: General remarks. Free text can contain names; no target field.
+    columns: [opmerkingen]

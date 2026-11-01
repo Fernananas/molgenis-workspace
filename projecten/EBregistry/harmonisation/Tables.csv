@@ -1,0 +1,28 @@
+resource,name,label,table type,unit of observation,keywords,description,number of rows,since version,until version,mg_draft
+ACCESS_EB,EBpatients,,Collected dataset,Patient,,,131,,,false
+EB_registry,AnchoringFibrils,,Harmonised dataset,Patient,,Anchoring fibrils,1,,,false
+EB_registry,BiologicalSex,,Harmonised dataset,Patient,,Biological sex at birth,1,,,false
+EB_registry,Biopsies,,Harmonised dataset,Patient,,,45,,,false
+EB_registry,BiopsyLocations,,Harmonised dataset,Patient,,Location of biopsy,1,,,false
+EB_registry,BiopsyTypes,,Harmonised dataset,Patient,,Kind of entry,1,,,false
+EB_registry,BlisteringLevels,,Harmonised dataset,Patient,,Level of blistering,1,,,false
+EB_registry,Countries,,Harmonised dataset,Patient,,Treatment Country,1,,,false
+EB_registry,DEBsubTypes,,Harmonised dataset,Patient,,Subtype of DEB,1,,,false
+EB_registry,DiagnosisMethods,,Harmonised dataset,Patient,,How was diagnosis made (clinical/clinical and investigations),1,,,false
+EB_registry,EBgenes,,Harmonised dataset,Patient,,Affected gene,1,,,false
+EB_registry,EBsubTypes,,Harmonised dataset,Patient,,Subtype of EBS,1,,,false
+EB_registry,EBtypes,,Harmonised dataset,Patient,,"Major EB type (EBS, JEB, DEB, KEB)",1,,,false
+EB_registry,Ethnicity,,Harmonised dataset,Patient,,Ethnicity,1,,,false
+EB_registry,Hemidesmosomes,,Harmonised dataset,Patient,,Hemidesmosomes,1,,,false
+EB_registry,Individuals,,Harmonised dataset,Patient,,,44,,,false
+EB_registry,Inheritance,,Harmonised dataset,Patient,,Disease inheritance (patient),1,,,false
+EB_registry,IntermediateFilamentStatus,,Harmonised dataset,Patient,,Intermediate filaments,1,,,false
+EB_registry,JEBsubTypes,,Harmonised dataset,Patient,,Subtype of JEB,1,,,false
+EB_registry,KindGenes,,Harmonised dataset,Patient,,Kind of gene,1,,,false
+EB_registry,LaminaDensa,,Harmonised dataset,Patient,,Lamina densa,1,,,false
+EB_registry,MaterialTypes,,Harmonised dataset,Patient,,What material stored,1,,,false
+EB_registry,PatientStatus,,Harmonised dataset,Patient,,Patient status (alive/dead/consent withdrawn),1,,,false
+EB_registry,ProteinExpressions,,Harmonised dataset,Patient,,Pankeratin,1,,,false
+EB_registry,StainedProteins,,Harmonised dataset,Patient,,Proteins stained,1,,,false
+EB_registry,Transcripts,,Harmonised dataset,Patient,,Reference sequence,1,,,false
+EB_registry,Variants,,Harmonised dataset,Patient,,,11,,,false

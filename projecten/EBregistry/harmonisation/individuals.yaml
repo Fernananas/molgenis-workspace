@@ -1,0 +1,270 @@
+# Source EBpatients -> target Individuals (1 row per source patient)
+# confidence: high = label+type fit; medium = plausible, unverified; low = guess
+# All `values:` maps are HYPOTHESES (source has no value lists). Fix after profiling.
+
+source:
+  file: EBpatients.csv
+
+target:
+  file: Individuals.csv
+  table: Individuals
+
+mappings:
+  # ---- keys / identifiers ----------------------------------------------------
+  - source: none
+    target: patientCode            # auto_id in target; supplied so child tables can link
+#    transform: link_key
+#    confidence: medium
+    note: Target key is auto_id (${mg_autoid}). Confirm EMX2 accepts supplied values; otherwise load Individuals first and re-read generated keys.
+
+  - source: patientCode
+    target: internalPatientCode
+    transform: copy
+    confidence: medium
+    note: Target label is "Internal Patient Code (EB-registry)". Assumes source patientCode is the local registry code and not derived from umcgNr/bsn.
+
+  # ---- demographics ----------------------------------------------------------
+  - source: eersteBezoekdatum
+    target: dateOfInitialClinicalAssessment
+    transform: parse_date
+    input_format: ["%d-%m-%Y", empty]
+    output_format: "%Y-%m-%d"
+    confidence: medium
+    note: First visit date assumed equal to initial clinical assessment.
+
+  - target: treatmentCountry
+    transform: constant
+    value: "Netherlands (the)"
+    confidence: medium
+    note: Single-centre assumption (UMCG). Not in source.
+
+  - target: treatmentCenter
+    transform: constant
+    value: "UMCG"
+    confidence: medium
+    note: Inferred from source label "UMCG nr.". Confirm centre name expected by the registry.
+
+  - source: gebDat
+    target: dateOfBirth
+    transform: parse_date
+    input_format: ["%d-%m-%Y", "%Y-%m-%d"]
+    output_format: "%Y-%m-%d"
+    confidence: high
+
+  - source: gebDat
+    target: age
+    transform: copy
+    enabled: false
+    confidence: low
+    note: Target "age" is typed `date` and required, which looks like a schema error (should be int). Age is derivable from dateOfBirth; source `leeftijd` is a stale snapshot. Resolve with registry owner before enabling.
+
+  - source: geslacht
+    target: biologicalSexAtBirth
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: null
+    values:
+      true: Male
+      waar: Male
+      onwaar: Female
+      false: Female
+    confidence: medium
+    note: Source may record current gender rather than sex at birth. Target has no "Unknown" option; blanks stay empty (required field).
+
+  - source: famAnamnese
+    target: ethnicity
+    transform: LLM or constant
+    value: "Not recorded"
+    confidence: medium
+    note: LLM, more info about ethnicity.No source field. Target offers an explicit "Not recorded" term.
+
+  # ---- EB diagnosis ----------------------------------------------------------
+  - target: majorEbType
+    transform: coalesce
+    confidence: low
+    note: diagnoseCode content unknown (could be ICD-10 or an internal code). Gene fallback is a clinical inference and needs review.
+    steps:
+      - source: diagnoseCode
+        transform: lookup
+        case_insensitive: true
+        on_unmapped: null
+        values:
+          EBS: "Epidermolysis Simplex (EBS)"
+          JEB: "Junctional Epidermolysis Bullosa (JEB)"
+          DEB: "Dystrophic Epidermolysis Bullosa (DEB)"
+          KEB: "Kindler Epidermolysis Bullosa (KEB)"
+      - source: gen
+        transform: lookup
+        case_insensitive: true
+        on_unmapped: null
+        values:
+          KRT5: "Epidermolysis Simplex (EBS)"
+          KRT14: "Epidermolysis Simplex (EBS)"
+          PLEC: "Epidermolysis Simplex (EBS)"
+          KLHL24: "Epidermolysis Simplex (EBS)"
+          DST: "Epidermolysis Simplex (EBS)"
+          EXPH5: "Epidermolysis Simplex (EBS)"
+          CD151: "Epidermolysis Simplex (EBS)"
+          LAMA3: "Junctional Epidermolysis Bullosa (JEB)"
+          LAMB3: "Junctional Epidermolysis Bullosa (JEB)"
+          LAMC2: "Junctional Epidermolysis Bullosa (JEB)"
+          COL17A1: "Junctional Epidermolysis Bullosa (JEB)"
+          ITGA6: "Junctional Epidermolysis Bullosa (JEB)"
+          ITGB4: "Junctional Epidermolysis Bullosa (JEB)"
+          ITGA3: "Junctional Epidermolysis Bullosa (JEB)"
+          COL7A1: "Dystrophic Epidermolysis Bullosa (DEB)"
+          FERMT1: "Kindler Epidermolysis Bullosa (KEB)"
+
+  - target: howWasDiagnosisMade
+    transform: rules
+    confidence: medium
+    note: Derived. Any IF/EM/DNA evidence => "plus additional investigations". Absence of evidence is treated as clinical only.
+    rules:
+      - when: {ifNummer: present}
+        value: "Clinical diagnosis plus additional investigations"
+      - when: {emNummer: present}
+        value: "Clinical diagnosis plus additional investigations"
+      - when: {gen: present}
+        value: "Clinical diagnosis plus additional investigations"
+    default: "Clinical diagnosis only"
+
+  - source: erf
+    target: diseaseInheritance
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: null
+    values:
+      AD: "Autosomal dominant"
+      "XD": "Indeterminate"
+      AR: "Autosomal recessive"
+      "SP": "Indeterminate"
+      "Sp": "Indeterminate"
+    confidence: medium
+    note: Source "Erf" assumed = inheritance pattern. Other patterns (de novo, X-linked, sporadic) have no target term; "Indeterminate" would be a judgement call.
+
+  # EBS / JEB / DEB subtypes: sources are only indirect (distributie, gegeneraliseerd,
+  # onset, diagnoseCode). Disabled until the clinical rules are agreed.
+  - source: diagnoseCode
+    target: ebsSubtype
+    transform: lookup
+    enabled: false
+    when_target: {majorEbType: "Epidermolysis Simplex (EBS)"}
+    values: {}
+    confidence: low
+    note: Needs clinical mapping rules. Subtype "Other" (96) requires detailsOfOtherEbsSubtype.
+
+  - source: diagnoseCode
+    target: jebSubtype
+    transform: lookup
+    enabled: false
+    when_target: {majorEbType: "Junctional Epidermolysis Bullosa (JEB)"}
+    values: {}
+    confidence: low
+    note: Needs clinical mapping rules. Subtype "Other" (97) requires detailsOfOtherJebSubtype.
+
+  - source: diagnoseCode
+    target: debSubtype
+    transform: lookup
+    enabled: false
+    when_target: {majorEbType: "Dystrophic Epidermolysis Bullosa (DEB)"}
+    values: {}
+    confidence: low
+    note: Needs clinical mapping rules. Subtype "Other" (98) requires detailsOfOtherDebSubtype.
+
+  # ---- investigations --------------------------------------------------------
+  - target: immunofluorescencenceDiagnosticInvestigation   # [sic] spelling as in target schema
+    transform: any_present
+    sources: [ifNummer, ifEiwit1, ifEiwit2, ifEiwit3, ifEiwit4, ifKeratin14, ifBp180_1d1, ifNiceineGb3, ifCollageenViiLh7_2]
+    confidence: medium
+
+  - target: electronMicroscopyDiagnosticInvestigation
+    transform: any_present
+    sources: [emNummer, emBioptLokaties, emAnchoringFibrils, emHemidesmosomen, emTonofilamenten]
+    confidence: medium
+
+  - target: geneticTesting
+    transform: any_present
+    sources: [dnaOnderzoekIngezet, gen]
+    confidence: low
+    note: dnaOnderzoekIngezet may be a yes/no flag ("nee" is non-empty!). If so, switch to a to_bool on it combined with gen present. Check after profiling.
+
+  - target: immunofluorescenceNumberOfBiopsies
+    transform: count_present
+    sources: [ifNummer]
+    confidence: low
+    note: Only one IF number column exists; cannot see multiple biopsies. Count is 0/1 at best.
+
+  - target: electronMicroscopyNumberOfBiopsies
+    transform: count_present
+    sources: [emNummer]
+    confidence: low
+    note: Same limitation as IF.
+
+  - target: numberOfAffectedGenes
+    transform: count_present
+    sources: [gen]
+    confidence: low
+    note: gen1-gen4 are ambiguous (tested vs affected genes) and are not used. Gives 0/1 only.
+
+  # ---- patient materials: only ambiguous source (dna) -------------------------
+  - source: dna
+    target: patientMaterialStored
+    transform: to_bool
+    true_values: ["ja", "j", "yes", "y", "1", "true", "x"]
+    false_values: ["nee", "n", "no", "0", "false"]
+    enabled: false
+    confidence: low
+    note: Source "DNA" could mean DNA stored, DNA tested, or DNA available. Do not enable until confirmed. whatMaterialStored would then be "DNA" (target allows only ONE material per patient).
+
+  # ---- patient status --------------------------------------------------------
+  - target: patientStatus
+    transform: rules
+    confidence: medium
+    note: Source has no "consent withdrawn" equivalent. Blank `overleden` with no death date is left empty, not assumed alive.
+    rules:
+      - when: {datumOverlijden: present}
+        value: "Dead"
+      - when: {overleden: ["ja", "j", "yes", "y", "1", "true", "x"]}
+        value: "Dead"
+      - when: {overleden: ["nee", "n", "no", "0", "false"]}
+        value: "Alive and participating"
+
+  - source: datumOverlijden
+    target: dateOfDeath
+    transform: parse_date
+    input_format: ["%d-%m-%Y", "%Y-%m-%d"]
+    output_format: "%Y-%m-%d"
+    confidence: high
+
+# Target columns with no usable source. Required ones will fail load validation until resolved.
+gaps:
+  - target: patientCountryOfOrigin
+    required: true
+    note: No source. Residence (woonplaats) is not origin; do not infer. Needs data collection or an agreed default.
+  - target: dateOfDiagnosis
+    required: true
+    note: No source. eersteBezoekdatum is the first visit, not the diagnosis date.
+  - target: detailsOfOtherEthnicity
+    required: false
+    note: No source.
+  - target: detailsOfOtherEbsSubtype
+    required: false
+    note: Depends on subtype mapping.
+  - target: detailsOfOtherJebSubtype
+    required: false
+    note: Depends on subtype mapping.
+  - target: detailsOfOtherDebSubtype
+    required: false
+    note: Depends on subtype mapping.
+  - target: thisDiagnosisRequiresSupportOrConfirmationFromDCC
+    required: true
+    note: No source (diagnostic curation committee is a registry concept).
+  - target: diagnosisConfirmedByDiagnosticCurationCommittee
+    required: true
+    note: No source.
+  - target: whatMaterialStored
+    required: false
+    note: Depends on resolving source "dna".
+  - target: detailsOfOtherMaterialsStored
+    required: false
+    note: No source.

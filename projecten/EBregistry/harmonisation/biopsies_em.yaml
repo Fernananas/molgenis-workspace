@@ -1,0 +1,101 @@
+# Source EBpatients -> target Biopsies, electron microscopy (EM) rows.
+# One source row yields 0 or 1 EM biopsy row. Appends to Biopsies.csv.
+# Finding codes are HYPOTHESES (Dutch normaal/verminderd/afwezig ...). Fix after profiling.
+
+source:
+  file: EBpatients.csv
+
+target:
+  file: Biopsies.csv
+  table: Biopsies
+  mode: append
+
+emit_if:
+  any_present: [emNummer, emBioptLokaties, emAnchoringFibrils, emHemidesmosomen, emTonofilamenten]
+
+x_em_values: &em
+  NORMAAL: Normal
+  NORMAL: Normal
+  VERMINDERD: Reduced
+  REDUCED: Reduced
+  AFWEZIG: Absent
+  ABSENT: Absent
+  HYPOPLASTISCH: Hypoplastic
+  HYPOPLASTIC: Hypoplastic
+  ONBEKEND: Unknown
+  UNKNOWN: Unknown
+
+# AnchoringFibrils ontology has no "Hypoplastic" term (Normal/Reduced/Absent/Unknown only)
+x_af_values: &af
+  NORMAAL: Normal
+  NORMAL: Normal
+  VERMINDERD: Reduced
+  REDUCED: Reduced
+  AFWEZIG: Absent
+  ABSENT: Absent
+  ONBEKEND: Unknown
+  UNKNOWN: Unknown
+
+mappings:
+  - source: patientCode
+    target: individual
+    transform: link_key
+
+  - target: kindOfEntry
+    transform: constant
+    value: "Electron microscopy"
+    confidence: high
+
+  - source: emBioptLokaties
+    target: locationOfBiopsy
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: null
+    values:
+      GEZONDE HUID: "Healthy-looking skin"
+      "NORMALE HUID": "Healthy-looking skin"
+      BLAAR: "Blister"
+      BLISTER: "Blister"
+    confidence: low
+    note: Source is plural ("lokaties") and may hold several locations in one cell; target allows one. Review after profiling.
+
+  - source: emAnchoringFibrils
+    target: anchoringFibrils
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: null
+    values: *af
+    confidence: medium
+    note: emAfs ("EM AFs") looks like a duplicate/shorthand; left unmapped until confirmed.
+
+  - source: emHemidesmosomen
+    target: hemidesmosomes
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: null
+    values: *em
+    confidence: medium
+
+  - source: emTonofilamenten
+    target: intermediateFilaments
+    transform: lookup
+    case_insensitive: true
+    on_unmapped: null
+    values:
+      <<: *em
+      KLONTEREND: Clumping
+      CLUMPING: Clumping
+    confidence: low
+    note: Tonofilaments = keratin intermediate filaments. Assumed equivalent.
+
+  - target: otherInformation
+    transform: concat
+    enabled: false
+    sources: [emVerslag, emOpmerkingen, emSbdp]
+    confidence: medium
+    note: Free-text EM reports (+ emSbdp). May contain identifiers; enable only after privacy review.
+
+gaps:
+  - {target: levelOfBlistering, required: false, note: "No structured source; may be in emVerslag free text."}
+  - {target: laminaDensa, required: false, note: "No clear source. emSbdp (sub-basal dense plate?) is not lamina densa."}
+  - {target: proteinsStained, required: false, note: "IF only."}

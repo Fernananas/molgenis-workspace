@@ -1,0 +1,226 @@
+# Source EBpatients -> target Biopsies, immunofluorescence (IF) rows.
+# One source row yields 0 or 1 IF biopsy row (only emitted if any IF column is filled).
+# Staining codes are HYPOTHESES (typical Dutch labs: +++ / ++ / + / -). Fix after profiling.
+
+source:
+  file: EBpatients.csv
+
+target:
+  file: Biopsies.csv
+  table: Biopsies
+  mode: write                      # first job writing Biopsies.csv; biopsies_em.yaml appends
+
+emit_if:
+  any_present: [ifNummer, ifEiwit1, ifEiwit2, ifEiwit3, ifEiwit4, ifKeratin14, ifBp180_1d1, ifNiceineGb3, ifCollageenViiLh7_2]
+
+# Shared definitions (YAML anchors; not read by the engine)
+x_status_values: &status
+  "+++": Normal
+  "NORMAAL": Normal
+  "NORMAL": Normal
+  "++": Reduced
+  "+": Reduced
+  "VERMINDERD": Reduced
+  "REDUCED": Reduced
+  "-": Absent
+  "AFWEZIG": Absent
+  "ABSENT": Absent
+
+x_pairs: &pairs
+  transform: paired_lookup
+  name_columns: [ifEiwit1, ifEiwit2, ifEiwit3, ifEiwit4]
+  value_columns: [ifAankleuring1, ifAankleuring2, ifAankleuring3, ifAankleuring4]
+  case_insensitive: true
+  on_unmapped: null
+  values: *status
+
+mappings:
+  - source: patientCode
+    target: individual
+    transform: link_key
+
+  - target: kindOfEntry
+    transform: constant
+    value: "Immunoflurescence"       # [sic] spelling as in BiopsyTypes ontology
+    confidence: high
+
+  # ---- per-protein expression. Free-text protein name + paired result (ifEiwit/ifAankleuring 1-4),
+  #      plus fixed columns for four antibodies. Aliases are guesses; profile ifEiwit1-4 to complete them.
+  - target: pankeratin
+    <<: *pairs
+    match: [pankeratine, pankeratin, pan-keratine, pan keratine]
+    confidence: low
+
+  - target: keratin14
+    transform: coalesce
+    confidence: medium
+    steps:
+      - {source: ifKeratin14, transform: lookup, case_insensitive: true, on_unmapped: null, values: *status}
+      - <<: *pairs
+        match: [keratine 14, keratin 14, k14, krt14]
+
+  - target: keratin5
+    <<: *pairs
+    match: [keratine 5, keratin 5, k5, krt5]
+    confidence: low
+
+  - target: exophilin5
+    <<: *pairs
+    match: [exophilin-5, exophilin 5, exophiline 5, exph5]
+    confidence: low
+
+  - target: bp230Bpag1e
+    <<: *pairs
+    match: [bp230, bpag1e, bpag1, bp230/bpag1e]
+    confidence: low
+
+  - target: klhl24
+    <<: *pairs
+    match: [klhl24]
+    confidence: low
+
+  - target: plectin
+    <<: *pairs
+    match: [plectine, plectin]
+    confidence: low
+
+  - target: bp180TypeXviiCollagen
+    transform: coalesce
+    confidence: medium
+    note: ifBp180_1d1 = BP180, clone 1D1 (from column label).
+    steps:
+      - {source: ifBp180_1d1, transform: lookup, case_insensitive: true, on_unmapped: null, values: *status}
+      - <<: *pairs
+        match: [bp180, collageen xvii, collagen xvii, col17]
+
+  - target: laminin332
+    transform: coalesce
+    confidence: medium
+    note: ifNiceineGb3 = nicein (laminin-332), clone GB3 (from column label). NOT kindlin-1, despite the similar-sounding word.
+    steps:
+      - {source: ifNiceineGb3, transform: lookup, case_insensitive: true, on_unmapped: null, values: *status}
+      - <<: *pairs
+        match: [laminine 332, laminin 332, laminin-332, laminine-332, nicein, niceine, kalinin, laminine 5, laminin 5]
+
+  - target: integrinAlfa6
+    <<: *pairs
+    match: [integrine alfa6, integrin alfa6, integrine alpha6, integrin alpha6, itga6]
+    confidence: low
+
+  - target: integrinBeta4
+    <<: *pairs
+    match: [integrine beta4, integrin beta4, itgb4]
+    confidence: low
+
+  - target: integrinAlfa3
+    <<: *pairs
+    match: [integrine alfa3, integrin alfa3, integrine alpha3, integrin alpha3, itga3]
+    confidence: low
+
+  - target: integrinBeta1
+    <<: *pairs
+    match: [integrine beta1, integrin beta1, itgb1]
+    confidence: low
+
+  - target: type7Collagen
+    transform: coalesce
+    confidence: medium
+    note: ifCollageenViiLh7_2 = type VII collagen, clone LH7.2. The second column ifCol7Lh7_2CoPlus ("co +++") is unmapped (unclear if duplicate or co-staining).
+    steps:
+      - {source: ifCollageenViiLh7_2, transform: lookup, case_insensitive: true, on_unmapped: null, values: *status}
+      - <<: *pairs
+        match: [collageen vii, collagen vii, col7, type vii, collageen 7]
+
+  - target: kindlin1
+    <<: *pairs
+    match: [kindline, kindlin-1, kindlin 1, kindline-1, fermt1]
+    confidence: low
+
+  - target: otherProteins
+    transform: paired_other
+    as: status
+    case_insensitive: true
+    value_columns: [ifAankleuring1, ifAankleuring2, ifAankleuring3, ifAankleuring4]
+    name_columns: [ifEiwit1, ifEiwit2, ifEiwit3, ifEiwit4]
+    values: *status
+    confidence: low
+    note: Status of the first protein whose name matched no alias above. If several, only the first is kept (target allows one).
+
+  - target: detailsOfOtherProteins
+    transform: paired_other
+    name_columns: [ifEiwit1, ifEiwit2, ifEiwit3, ifEiwit4]
+    confidence: low
+    note: Free-text protein names not matched above.
+
+  - target: proteinsStained
+    transform: list_from_target
+    labels:
+      pankeratin: Pankeratin
+      keratin14: Keratin 14
+      keratin5: Keratin 5
+      exophilin5: Exophilin-5
+      bp230Bpag1e: BP230/BPAG1e
+      klhl24: KLHL24
+      plectin: Plectin
+      bp180TypeXviiCollagen: BP180 / type XVII collagen
+      laminin332: Laminin-332
+      integrinAlfa6: Integrin alfa6
+      integrinBeta4: Integrin beta4
+      integrinAlfa3: Integrin alfa3
+      integrinBeta1: Integrin beta1
+      type7Collagen: Type 7 collagen
+      kindlin1: Kindlin-1
+      otherProteins: Other proteins
+    confidence: medium
+    note: Derived. A protein counts as stained if it has a recorded expression value (Normal counts).
+
+  # ---- antibody clones: only knowable from column labels, not data ------------
+  - target: bp180TypeXviiCollagenAntibody
+    transform: constant
+    value: "1D1"
+    when_present: [ifBp180_1d1]
+    confidence: low
+    note: Clone taken from the source column label. Verify.
+
+  - target: laminin332Antibody
+    transform: constant
+    value: "GB3"
+    when_present: [ifNiceineGb3]
+    confidence: low
+    note: Clone taken from the source column label. Verify.
+
+  - target: type7CollagenAntibody
+    transform: constant
+    value: "LH7.2"
+    when_present: [ifCollageenViiLh7_2]
+    confidence: low
+    note: Clone taken from the source column label (written LH7-2 there). Verify.
+
+  # ---- free text: disabled until privacy review ----------------------------------
+  - target: otherInformation
+    transform: concat
+    enabled: false
+    sources: [ifVerslag, ifOpmerkingen]
+    confidence: medium
+    note: Free-text lab reports; may contain names or identifiers. Enable only after review/redaction.
+
+gaps:
+  - {target: locationOfBiopsy, required: false, note: "No IF-specific source (emBioptLokaties belongs to EM). Filled in biopsies_em.yaml."}
+  - {target: levelOfBlistering, required: false, note: "No source; may be inside free-text reports."}
+  - {target: pankeratinAntibody, required: false, note: "No source (clone unknown)."}
+  - {target: keratin14Antibody, required: false, note: "No source (clone not in label)."}
+  - {target: keratin5Antibody, required: false, note: "No source."}
+  - {target: exophilin5Antibody, required: false, note: "No source."}
+  - {target: bp230Bpag1eAntibody, required: false, note: "No source."}
+  - {target: klhl24Antibody, required: false, note: "No source."}
+  - {target: plectinAntibody, required: false, note: "No source."}
+  - {target: integrinAlfa6Antibody, required: false, note: "No source."}
+  - {target: integrinBeta4Antibody, required: false, note: "No source."}
+  - {target: integrinAlfa3Antibody, required: false, note: "No source."}
+  - {target: integrinBeta1Antibody, required: false, note: "No source."}
+  - {target: kindlin1Antibody, required: false, note: "No source."}
+  - {target: otherProteinsAntibody, required: false, note: "No source."}
+  - {target: intermediateFilaments, required: false, note: "EM-only finding; filled in biopsies_em.yaml."}
+  - {target: hemidesmosomes, required: false, note: "EM-only; filled in biopsies_em.yaml."}
+  - {target: anchoringFibrils, required: false, note: "EM-only; filled in biopsies_em.yaml."}
+  - {target: laminaDensa, required: false, note: "No source (emSbdp is not clearly lamina densa)."}

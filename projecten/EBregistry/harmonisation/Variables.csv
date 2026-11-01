@@ -1,0 +1,221 @@
+resource,table,name,useExternalDefinition.resource,useExternalDefinition.table,useExternalDefinition.name,label,description,original language description,format,unit,ontology term URI,since version,until version,repeat unit,repeat min,repeat max,example values,permitted values.resource,permitted values.table,permitted values.variable,permitted values.value,keywords,generated_keywords,vocabularies,notes,collection event,reused in resources.resource,reused in resources.variable.resource,reused in resources.variable.table,reused in resources.variable.name,mappings.source,mappings.source table,mappings.target,mappings.target table,mappings.target variable,mappings.repeats,mg_draft
+ACCESS_EB,EBpatients,diagnoseCode,,,,Diagnose Code,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,achternaam,,,,Achternaam,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,voorvoegsel,,,,Voorvoegsel,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,voornaam,,,,Voornaam,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,gebDat,,,,Geb dat,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,leeftijd,,,,Leeftijd,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,umcgNr,,,,UMCG nr.,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,bsn,,,,BSN,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,patientCode,,,,Patient-code,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,eersteBezoekdatum,,,,Eerste bezoekdatum,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,datumLaatsteBezoek,,,,Datum laatste bezoek,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,leeftijdBijLaatsteBezoek,,,,Leeftijd bij laatste bezoek,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,verwijzer,,,,Verwijzer,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,plaatsVerwijzer,,,,Plaats verwijzer,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,famAnamnese,,,,Fam anamnese,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,geslacht,,,,Geslacht,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,straat,,,,Straat,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,postcode,,,,Postcode,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,woonplaats,,,,Woonplaats,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,telefoonnummer,,,,Telefoonnummer,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,mobiel,,,,Mobiel,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,email,,,,E-mail,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,overleden,,,,Overleden?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,datumOverlijden,,,,Datum overlijden,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,redenVanOverlijden,,,,Reden van Overlijden,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,erf,,,,Erf,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,distributie,,,,Distrubitie,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,overigeHuidafwijkingen,,,,Overige huidafwijkingen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,tractusLocomotorius,,,,Tractus locomotorius,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,tractusDigestivus,,,,Tractus digestivus,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,tractusGenitoUretralis,,,,Tractus genito-uretralis,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,overigeLichaamsafwijkingen,,,,Overige lichaamsafwijkingen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,blaren,,,,Blaren?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,milia,,,,Milia?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,verlitteking,,,,Verlitteking?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,atrofie,,,,Atrofie?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,albopapuloid,,,,Albopapuloid?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,pigmentatie,,,,Pigmentatie,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,hypergranulatie,,,,Hypergranulatie?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,clas,,,,CLAS?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,nagelafwi,,,,Nagelafwi?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,alopecia,,,,Alopecia?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,hyperkeratose,,,,Hyperkeratose?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,keratoderma,,,,Keratoderma?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,fragieleHuid,,,,Fragiele huid?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,purpura,,,,Purpura?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,oraleErosies,,,,Orale erosies?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,oraleLittekens,,,,Orale littekens,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,microstomie,,,,Microstomie?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ankyloglossie,,,,Ankyloglossie?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,enameldefecten,,,,Enameldefecten?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,anoHypodontie,,,,Ano-/hypodontie?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,caries,,,,Caries?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,anemie,,,,Anemie?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,groeiretardatie,,,,Groeiretardatie?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,verbetering,,,,Verbetering?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,onset,,,,Onset,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,handBlaar,,,,Hand blaar?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,handHyperkeratose,,,,Hand hyperkeratose?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,voetBlaar,,,,Voet blaar?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,voetHyperkeratose,,,,Voet hyperkeratose?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,gegeneraliseerd,,,,Gegeneraliseerd?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,herpetiform,,,,Herpetiform?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,temperatuurInvloed,,,,Temperatuurinvloed?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,nagelafwijking,,,,Nagelafwijking,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,lmNummer,,,,LM #,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,lmVerslag,,,,LM verslag,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emNummer,,,,EM #,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emBioptLokaties,,,,EM biopt lokaties,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emVerslag,,,,EM verslag,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emOpmerkingen,,,,EM Opmerkingen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emAnchoringFibrils,,,,EM anchoring fibrils,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emAfs,,,,EM AFs,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emHemidesmosomen,,,,EM hemidesmosomen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emSbdp,,,,EM SBDP,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,emTonofilamenten,,,,EM tonofilamenten,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifNummer,,,,IF #,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifVerslag,,,,IF verslag,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifOpmerkingen,,,,IF Opmerkingen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifEiwit1,,,,IFEiwit1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifAankleuring1,,,,IFAankleuring1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifEiwit2,,,,IFEiwit2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifAankleuring2,,,,IFAankleuring2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifEiwit3,,,,IFEiwit3,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifAankleuring3,,,,IFAankleuring3,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifEiwit4,,,,IFEiwit4,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifAankleuring4,,,,IFAankleuring4,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifKeratin14,,,,IF keratine 14,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifBp180_1d1,,,,IF BP180 (1D1),,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifNiceineGb3,,,,IF niceïne (GB3),,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifCollageenViiLh7_2,,,,IF collageen VII (LH7-2),,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,ifCol7Lh7_2CoPlus,,,,IF COL7 (LH7-2) (co +++),,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,retentieBasaleCellen,,,,Retentie basale cellen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,opmerkingen,,,,Opmerkingen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,brief,,,,Brief,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,dna,,,,DNA,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,dnaFamilieleden,,,,DNA familieleden,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,welkeFamilieleden,,,,Welke familieleden?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,dnaBij,,,,DNA bij,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,dnaOnderzoekIngezet,,,,DNA-onderzoek ingezet?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,gen1,,,,Gen 1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,afgerond1,,,,Afgerond?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,gen2,,,,Gen 2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,afgerond2,,,,Afgerond?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,gen3,,,,Gen 3,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,afgerond3,,,,Afgerond?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,gen4,,,,Gen 4,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,afgerond4,,,,Afgerond?,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,mutatie,,,,Mutatie,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,mutatieGevonden,,,,Mutatie gevonden,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,genotype,,,,Genotype,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,gen,,,,Gen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,allel1,,,,Allel 1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,aminozuurNiveau1,,,,Aminozuurniveau 1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,exonMutatie1,,,,Exon mutatie 1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,typeMutatie1,,,,Type mutatie 1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,origineMutatie1,,,,Origine mutatie1,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,allel2,,,,Allel 2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,aminozuurNiveau2,,,,Aminozuurniveau 2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,exonMutatie2,,,,Exon mutatie 2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,typeMutatie2,,,,Type mutatie 2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,origineMutatie2,,,,Origine Mutatie 2,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,polymorfismen,,,,Polymorfismen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,genotypeVader,,,,Genotype vader,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,genotypeMoeder,,,,Genotype moeder,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,mutatieOpmerkingen,,,,Mutatie Opmerkingen,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,revertant,,,,Revertant,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,revertantMechanisme,,,,Revertant mechanisme,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,dossiernummerKg,,,,Dossiernummer KG,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+ACCESS_EB,EBpatients,selecteer,,,,Selecteer,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,individual,,,,individual,belongs to individual,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,kindOfEntry,,,,Kind of entry,Kind of entry,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,locationOfBiopsy,,,,Location of biopsy,Location of biopsy,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,levelOfBlistering,,,,Level of blistering,Level of blistering,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,proteinsStained,,,,Proteins stained,Proteins stained,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,detailsOfOtherProteins,,,,Details of other proteins,Details of other proteins,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,pankeratinAntibody,,,,Pankeratin antibody,Pankeratin antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,keratin14Antibody,,,,Keratin 14 antibody,Keratin 14 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,keratin5Antibody,,,,Keratin 5 antibody,Keratin 5 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,exophilin5Antibody,,,,Exophilin-5 antibody,Exophilin-5 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,bp230Bpag1eAntibody,,,,BP230/BPAG1e antibody,BP230/BPAG1e antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,klhl24Antibody,,,,KLHL24 antibody,KLHL24 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,plectinAntibody,,,,Plectin antibody,Plectin antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,bp180TypeXviiCollagenAntibody,,,,BP180 / type XVII collagen antibody,BP180 / type XVII collagen antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,laminin332Antibody,,,,Laminin-332 antibody,Laminin-332 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinAlfa6Antibody,,,,Integrin alfa6 antibody,Integrin alfa6 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinBeta4Antibody,,,,Integrin beta4 antibody,Integrin beta4 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinAlfa3Antibody,,,,Integrin alfa3 antibody,Integrin alfa3 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinBeta1Antibody,,,,Integrin beta1 antibody,Integrin beta1 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,type7CollagenAntibody,,,,Type 7 collagen antibody,Type 7 collagen antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,kindlin1Antibody,,,,Kindlin-1 antibody,Kindlin-1 antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,otherProteinsAntibody,,,,Other proteins antibody,Other proteins antibody,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,pankeratin,,,,Pankeratin,Pankeratin,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,keratin14,,,,Keratin 14,Keratin 14,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,keratin5,,,,Keratin 5,Keratin 5,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,exophilin5,,,,Exophilin-5,Exophilin-5,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,bp230Bpag1e,,,,BP230/BPAG1e,BP230/BPAG1e,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,klhl24,,,,KLHL24,KLHL24,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,plectin,,,,Plectin,Plectin,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,bp180TypeXviiCollagen,,,,BP180 / type XVII collagen,BP180 / type XVII collagen,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,laminin332,,,,Laminin-332,Laminin-332,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinAlfa6,,,,Integrin alfa6,Integrin alfa6,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinBeta4,,,,Integrin beta4,Integrin beta4,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinAlfa3,,,,Integrin alfa3,Integrin alfa3,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,integrinBeta1,,,,Integrin beta1,Integrin beta1,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,type7Collagen,,,,Type 7 collagen,Type 7 collagen,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,kindlin1,,,,Kindlin-1,Kindlin-1,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,otherProteins,,,,Other proteins,Other proteins,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,intermediateFilaments,,,,Intermediate filaments,Intermediate filaments,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,hemidesmosomes,,,,Hemidesmosomes,Hemidesmosomes,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,anchoringFibrils,,,,Anchoring fibrils,Anchoring fibrils,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,laminaDensa,,,,Lamina densa,Lamina densa,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,otherInformation,,,,Other information,Other information,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Biopsies,biopsyId,,,,,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,dateOfInitialClinicalAssessment,,,,Date of Initial Clinical Assessment,Date of Initial Clinical Assessment,,date,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,patientCode,,,,Patient Code,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,internalPatientCode,,,,Internal Patient Code,Internal Patient Code (EB-registry),,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,treatmentCountry,,,,Treatment Country,Treatment Country,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,treatmentCenter,,,,Treatment Center,Treatment Center,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,patientCountryOfOrigin,,,,Patient country of origin,Patient country of origin,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,dateOfBirth,,,,Date of birth,Date of birth,,date,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,age,,,,Age,Age,,date,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,biologicalSexAtBirth,,,,Biological sex at birth,Biological sex at birth,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,ethnicity,,,,Ethnicity,Ethnicity,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,detailsOfOtherEthnicity,,,,Details of other ethnicity,Details of other ethnicity,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,majorEbType,,,,Major EB type,"Major EB type (EBS, JEB, DEB, KEB)",,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,howWasDiagnosisMade,,,,How was diagnosis made,How was diagnosis made (clinical/clinical and investigations),,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,dateOfDiagnosis,,,,Date of diagnosis,Date of diagnosis,,date,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,diseaseInheritance,,,,Disease inheritance,Disease inheritance (patient),,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,ebsSubtype,,,,EBS subtype,Subtype of EBS,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,detailsOfOtherEbsSubtype,,,,Details of other EBS subtype,Details of other EBS subtype,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,jebSubtype,,,,JEB subtype,Subtype of JEB,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,detailsOfOtherJebSubtype,,,,Details of other JEB subtype,Details of other JEB subtype,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,debSubtype,,,,DEB subtype,Subtype of DEB,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,detailsOfOtherDebSubtype,,,,Details of other DEB subtype,Details of other DEB subtype,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,immunofluorescencenceDiagnosticInvestigation,,,,Immunofluorescencence diagnostic investigation,Immunofluorescence diagnostic investigation (no/yes),,binary,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,electronMicroscopyDiagnosticInvestigation,,,,Electron microscopy diagnostic investigation,Electron microscopy diagnostic investigation (no/yes),,binary,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,geneticTesting,,,,Genetic testing,genetic testing (no/yes),,binary,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,immunofluorescenceNumberOfBiopsies,,,,Immunofluorescence: number of biopsies,Immunofluorescence: number of biopsies,,integer,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,electronMicroscopyNumberOfBiopsies,,,,Electron microscopy: number of biopsies,Electron microscopy: number of biopsies,,integer,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,numberOfAffectedGenes,,,,Number of affected genes,Number of affected genes,,integer,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,biopsy,,,,Links to multiple biopsy records,Reference to one or more biopsy records; a single biopsy is also allowed.,,refback,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,genes,,,,Links to multiple gene records,Reference to one or more gene records; a single gene is also allowed.,,refback,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,thisDiagnosisRequiresSupportOrConfirmationFromDCC,,,,This diagnosis requires support or confirmation from a diagnostic curation committee,This diagnosis requires support or confirmation from a diagnostic curation committee (no/yes),,binary,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,diagnosisConfirmedByDiagnosticCurationCommittee,,,,Diagnosis confirmed by diagnostic curation committee,Diagnosis confirmed by diagnostic curation committee,,binary,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,patientMaterialStored,,,,Patient material stored,Patient material stored (no/yes),,binary,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,whatMaterialStored,,,,What material stored,What material stored,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,detailsOfOtherMaterialsStored,,,,Details of other materials stored,Details of other materials stored,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,patientStatus,,,,Patient status,Patient status (alive/dead/consent withdrawn),,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Individuals,dateOfDeath,,,,Date of death,Date of death,,date,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,individual,,,,individual,belongs to individual,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,kindOfGene,,,,Kind of gene,Kind of gene,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,affectedGene,,,,Affected gene,Affected gene,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,detailsOfOtherAffectedGene,,,,Details of other affected gene,Details of other affected gene,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,referenceSequence,,,,Reference sequence,Reference sequence,,categorical,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,detailsOfOtherReferenceSequence,,,,Details of other reference sequence,Details of other reference sequence,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,cdnaofThisAffectedGene,,,,cDNAof this affected gene,cDNAof this affected gene,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,isTheSecondAlleleForThisGeneDifferent,,,,Is the second allele for this gene different,Is the second allele for this gene different,,binary,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,cdnaOfAllele2,,,,cDNA of allele 2,cDNA of allele 2,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
+EB_registry,Variants,variantId,,,,,,,string,,,,,,,,,,,,,,,,,,,,,,,,,,,,false
