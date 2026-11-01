@@ -1,0 +1,12 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,1,Localized,,,,,,,,
+,2,Intermediate,,,,,,,,
+,3,Severe,,,,,,,,
+,5,With mottled pigmentation,,,,,,,,
+,6,Migratory circinate erythema,,,,,,,,
+,7,Intermediate with cardiomyopathy,,,,,,,,
+,8,Intermediate with muscular dystrophy,,,,,,,,
+,9,Severe with pyloric atresia,,,,,,,,
+,10,Localized with nephropathy,,,,,,,,
+,19,Indeterminate,,,,,,,,
+,96,Other EBS subtype,,,,,,,,

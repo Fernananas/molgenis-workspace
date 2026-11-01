@@ -1,0 +1,3 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,1,Main affected gene,,,,,,,,
+,2,Secondary affected gene(s),,,,,,,,

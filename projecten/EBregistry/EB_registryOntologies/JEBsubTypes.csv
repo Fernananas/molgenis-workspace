@@ -1,0 +1,11 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,1,Localized,,,,,,,,
+,2,Intermediate,,,,,,,,
+,3,Severe,,,,,,,,
+,10,With pyloric atresia,,,,,,,,
+,4,Inversa,,,,,,,,
+,11,Late onset,,,,,,,,
+,12,LOC syndrome,,,,,,,,
+,13,With interstitial lung disease and nephrotic syndrome,,,,,,,,
+,19,Indeterminate,,,,,,,,
+,97,Other JEB subtype,,,,,,,,

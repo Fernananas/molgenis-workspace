@@ -1,0 +1,3 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,1,Clinical diagnosis only,,,,,,,,
+,2,Clinical diagnosis plus additional investigations,,,,,,,,

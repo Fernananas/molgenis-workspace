@@ -1,0 +1,9 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,1,Skin tissue (FFPE blocks),,,,,,,,
+,2,Skin tissue (Fresh frozen material),,,,,,,,
+,3,Blood / Serum,,,,,,,,
+,4,Keratinocytes,,,,,,,,
+,5,Fibroblasts,,,,,,,,
+,6,DNA,,,,,,,,
+,7,RNA,,,,,,,,
+,9,Other materials,,,,,,,,

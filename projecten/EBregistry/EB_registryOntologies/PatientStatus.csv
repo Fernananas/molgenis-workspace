@@ -1,0 +1,4 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,0,Alive and participating,,,,,,,,
+,1,Dead,,,,,,,,
+,9,Consent withdrawn,,,,,,,,

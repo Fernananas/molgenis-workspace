@@ -1,0 +1,4 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,0,Normal,,,,,,,,
+,1,Reduced,,,,,,,,
+,2,Absent,,,,,,,,

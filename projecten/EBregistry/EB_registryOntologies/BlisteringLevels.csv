@@ -1,0 +1,7 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,0,No blister present,,,,,,,,
+,1,Suprabasal,,,,,,,,
+,2,Basal,,,,,,,,
+,3,Junctional,,,,,,,,
+,4,Sublamina densa,,,,,,,,
+,9,Mixed,,,,,,,,

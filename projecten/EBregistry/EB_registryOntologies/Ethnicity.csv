@@ -1,0 +1,11 @@
+order,name,label,tags,parent,codesystem,code,ontologyTermURI,definition,children,mg_draft
+,1,White / European,,,,,,,,
+,2,Black / African / African American,,,,,,,,
+,3,Latin,,,,,,,,
+,4,Middle Eastern / Arab,,,,,,,,
+,5,South Asian,,,,,,,,
+,6,Eastern Asian,,,,,,,,
+,7,Indigenous / First Nations / Native / Aboriginal,,,,,,,,
+,8,Mixed / Multiple ethnicities,,,,,,,,
+,19,Other ethnicity,,,,,,,,
+,0,Not recorded,,,,,,,,

@@ -1,0 +1,124 @@
+tableName,tableExtends,tableType,columnName,formLabel,columnType,key,required,readonly,refSchema,refTable,refLink,refBack,refLabel,defaultValue,validation,visible,computed,semantics,profiles,label,description
+AnchoringFibrils,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Anchoring fibrils,Anchoring fibrils
+BiologicalSex,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Biological sex at birth,Biological sex at birth
+Biopsies,,,,,,,,,,,,,,,,,,,,,
+BiopsyLocations,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Location of biopsy,Location of biopsy
+BiopsyTypes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Kind of entry,Kind of entry
+BlisteringLevels,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Level of blistering,Level of blistering
+Countries,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Treatment Country,Treatment Country
+DEBsubTypes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,DEB subtype,Subtype of DEB
+DiagnosisMethods,,ONTOLOGIES,,,,,,,,,,,,,,,,,,How was diagnosis made,How was diagnosis made (clinical/clinical and investigations)
+EBgenes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Affected gene,Affected gene
+EBsubTypes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,EBS subtype,Subtype of EBS
+EBtypes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Major EB type,"Major EB type (EBS, JEB, DEB, KEB)"
+Ethnicity,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Ethnicity,Ethnicity
+Hemidesmosomes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Hemidesmosomes,Hemidesmosomes
+Individuals,,,,,,,,,,,,,,,,,,,,,
+Inheritance,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Disease inheritance,Disease inheritance (patient)
+IntermediateFilamentStatus,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Intermediate filaments,Intermediate filaments
+JEBsubTypes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,JEB subtype,Subtype of JEB
+KindGenes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Kind of gene,Kind of gene
+LaminaDensa,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Lamina densa,Lamina densa
+MaterialTypes,,ONTOLOGIES,,,,,,,,,,,,,,,,,,What material stored,What material stored
+PatientStatus,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Patient status,Patient status (alive/dead/consent withdrawn)
+ProteinExpressions,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Pankeratin,Pankeratin
+StainedProteins,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Proteins stained,Proteins stained
+Transcripts,,ONTOLOGIES,,,,,,,,,,,,,,,,,,Reference sequence,Reference sequence
+Variants,,,,,,,,,,,,,,,,,,,,,
+Biopsies,,,individual,,ref,,true,,,Individuals,,,,,,,,,,individual,belongs to individual
+Biopsies,,,kindOfEntry,,ontology,,true,,,BiopsyTypes,,,,,,,,,,Kind of entry,Kind of entry
+Biopsies,,,locationOfBiopsy,,ontology,,,,,BiopsyLocations,,,,,,,,,,Location of biopsy,Location of biopsy
+Biopsies,,,levelOfBlistering,,ontology,,,,,BlisteringLevels,,,,,,,,,,Level of blistering,Level of blistering
+Biopsies,,,proteinsStained,,ontology_array,,,,,StainedProteins,,,,,,,,,,Proteins stained,Proteins stained
+Biopsies,,,detailsOfOtherProteins,,,,,,,,,,,,,,,,,Details of other proteins,Details of other proteins
+Biopsies,,,pankeratinAntibody,,,,,,,,,,,,,,,,,Pankeratin antibody,Pankeratin antibody
+Biopsies,,,keratin14Antibody,,,,,,,,,,,,,,,,,Keratin 14 antibody,Keratin 14 antibody
+Biopsies,,,keratin5Antibody,,,,,,,,,,,,,,,,,Keratin 5 antibody,Keratin 5 antibody
+Biopsies,,,exophilin5Antibody,,,,,,,,,,,,,,,,,Exophilin-5 antibody,Exophilin-5 antibody
+Biopsies,,,bp230Bpag1eAntibody,,,,,,,,,,,,,,,,,BP230/BPAG1e antibody,BP230/BPAG1e antibody
+Biopsies,,,klhl24Antibody,,,,,,,,,,,,,,,,,KLHL24 antibody,KLHL24 antibody
+Biopsies,,,plectinAntibody,,,,,,,,,,,,,,,,,Plectin antibody,Plectin antibody
+Biopsies,,,bp180TypeXviiCollagenAntibody,,,,,,,,,,,,,,,,,BP180 / type XVII collagen antibody,BP180 / type XVII collagen antibody
+Biopsies,,,laminin332Antibody,,,,,,,,,,,,,,,,,Laminin-332 antibody,Laminin-332 antibody
+Biopsies,,,integrinAlfa6Antibody,,,,,,,,,,,,,,,,,Integrin alfa6 antibody,Integrin alfa6 antibody
+Biopsies,,,integrinBeta4Antibody,,,,,,,,,,,,,,,,,Integrin beta4 antibody,Integrin beta4 antibody
+Biopsies,,,integrinAlfa3Antibody,,,,,,,,,,,,,,,,,Integrin alfa3 antibody,Integrin alfa3 antibody
+Biopsies,,,integrinBeta1Antibody,,,,,,,,,,,,,,,,,Integrin beta1 antibody,Integrin beta1 antibody
+Biopsies,,,type7CollagenAntibody,,,,,,,,,,,,,,,,,Type 7 collagen antibody,Type 7 collagen antibody
+Biopsies,,,kindlin1Antibody,,,,,,,,,,,,,,,,,Kindlin-1 antibody,Kindlin-1 antibody
+Biopsies,,,otherProteinsAntibody,,,,,,,,,,,,,,,,,Other proteins antibody,Other proteins antibody
+Biopsies,,,pankeratin,,ontology,,,,,ProteinExpressions,,,,,,,,,,Pankeratin,Pankeratin
+Biopsies,,,keratin14,,ontology,,,,,ProteinExpressions,,,,,,,,,,Keratin 14,Keratin 14
+Biopsies,,,keratin5,,ontology,,,,,ProteinExpressions,,,,,,,,,,Keratin 5,Keratin 5
+Biopsies,,,exophilin5,,ontology,,,,,ProteinExpressions,,,,,,,,,,Exophilin-5,Exophilin-5
+Biopsies,,,bp230Bpag1e,,ontology,,,,,ProteinExpressions,,,,,,,,,,BP230/BPAG1e,BP230/BPAG1e
+Biopsies,,,klhl24,,ontology,,,,,ProteinExpressions,,,,,,,,,,KLHL24,KLHL24
+Biopsies,,,plectin,,ontology,,,,,ProteinExpressions,,,,,,,,,,Plectin,Plectin
+Biopsies,,,bp180TypeXviiCollagen,,ontology,,,,,ProteinExpressions,,,,,,,,,,BP180 / type XVII collagen,BP180 / type XVII collagen
+Biopsies,,,laminin332,,ontology,,,,,ProteinExpressions,,,,,,,,,,Laminin-332,Laminin-332
+Biopsies,,,integrinAlfa6,,ontology,,,,,ProteinExpressions,,,,,,,,,,Integrin alfa6,Integrin alfa6
+Biopsies,,,integrinBeta4,,ontology,,,,,ProteinExpressions,,,,,,,,,,Integrin beta4,Integrin beta4
+Biopsies,,,integrinAlfa3,,ontology,,,,,ProteinExpressions,,,,,,,,,,Integrin alfa3,Integrin alfa3
+Biopsies,,,integrinBeta1,,ontology,,,,,ProteinExpressions,,,,,,,,,,Integrin beta1,Integrin beta1
+Biopsies,,,type7Collagen,,ontology,,,,,ProteinExpressions,,,,,,,,,,Type 7 collagen,Type 7 collagen
+Biopsies,,,kindlin1,,ontology,,,,,ProteinExpressions,,,,,,,,,,Kindlin-1,Kindlin-1
+Biopsies,,,otherProteins,,ontology,,,,,ProteinExpressions,,,,,,,,,,Other proteins,Other proteins
+Biopsies,,,intermediateFilaments,,ontology,,,,,IntermediateFilamentStatus,,,,,,,,,,Intermediate filaments,Intermediate filaments
+Biopsies,,,hemidesmosomes,,ontology,,,,,Hemidesmosomes,,,,,,,,,,Hemidesmosomes,Hemidesmosomes
+Biopsies,,,anchoringFibrils,,ontology,,,,,AnchoringFibrils,,,,,,,,,,Anchoring fibrils,Anchoring fibrils
+Biopsies,,,laminaDensa,,ontology,,,,,LaminaDensa,,,,,,,,,,Lamina densa,Lamina densa
+Biopsies,,,otherInformation,,text,,,,,,,,,,,,,,,Other information,Other information
+Biopsies,,,biopsyId,,auto_id,1,true,,,,,,,,,,,,,,
+Individuals,,,demog,,heading,,,,,,,,,,,,,,,Demographic information,Section heading: Demographic information
+Individuals,,,dateOfInitialClinicalAssessment,,date,,true,,,,,,,,,,,,,Date of Initial Clinical Assessment,Date of Initial Clinical Assessment
+Individuals,,,patientCode,,auto_id,1,true,,,,,,,,,,"${mg_autoid(format=numbers, length=8)}",,,Patient Code,
+Individuals,,,internalPatientCode,,,,true,,,,,,,,,,,,,Internal Patient Code,Internal Patient Code (EB-registry)
+Individuals,,,treatmentCountry,,ontology,,true,,,Countries,,,,,,,,,,Treatment Country,Treatment Country
+Individuals,,,treatmentCenter,,,,true,,,,,,,,,,,,,Treatment Center,Treatment Center
+Individuals,,,patientCountryOfOrigin,,ontology,,true,,,Countries,,,,,,,,,,Patient country of origin,Patient country of origin
+Individuals,,,dateOfBirth,,date,,true,,,,,,,,,,,,,Date of birth,Date of birth
+Individuals,,,age,,date,,true,,,,,,,,,,,,,Age,Age
+Individuals,,,biologicalSexAtBirth,,ontology,,true,,,BiologicalSex,,,,,,,,,,Biological sex at birth,Biological sex at birth
+Individuals,,,ethnicity,,ontology,,true,,,Ethnicity,,,,,,,,,,Ethnicity,Ethnicity
+Individuals,,,detailsOfOtherEthnicity,,text,,,,,,,,,,,,,,,Details of other ethnicity,Details of other ethnicity
+Individuals,,,diag,,heading,,,,,,,,,,,,,,,EB diagnosis,Section heading: EB diagnosis
+Individuals,,,majorEbType,,ontology,,true,,,EBtypes,,,,,,,,,,Major EB type,"Major EB type (EBS, JEB, DEB, KEB)"
+Individuals,,,howWasDiagnosisMade,,ontology,,true,,,DiagnosisMethods,,,,,,,,,,How was diagnosis made,How was diagnosis made (clinical/clinical and investigations)
+Individuals,,,dateOfDiagnosis,,date,,true,,,,,,,,,,,,,Date of diagnosis,Date of diagnosis
+Individuals,,,diseaseInheritance,,ontology,,true,,,Inheritance,,,,,,,,,,Disease inheritance,Disease inheritance (patient)
+Individuals,,,ebsSubtype,,ontology,,,,,EBsubTypes,,,,,,,,,,EBS subtype,Subtype of EBS
+Individuals,,,detailsOfOtherEbsSubtype,,text,,,,,,,,,,,,,,,Details of other EBS subtype,Details of other EBS subtype
+Individuals,,,jebSubtype,,ontology,,,,,JEBsubTypes,,,,,,,,,,JEB subtype,Subtype of JEB
+Individuals,,,detailsOfOtherJebSubtype,,text,,,,,,,,,,,,,,,Details of other JEB subtype,Details of other JEB subtype
+Individuals,,,debSubtype,,ontology,,,,,DEBsubTypes,,,,,,,,,,DEB subtype,Subtype of DEB
+Individuals,,,detailsOfOtherDebSubtype,,text,,,,,,,,,,,,,,,Details of other DEB subtype,Details of other DEB subtype
+Individuals,,,investig,,heading,,,,,,,,,,,,,,,Investigations,Section heading: Investigations
+Individuals,,,immunofluorescencenceDiagnosticInvestigation,,bool,,true,,,,,,,,,,,,,Immunofluorescencence diagnostic investigation,Immunofluorescence diagnostic investigation (no/yes)
+Individuals,,,electronMicroscopyDiagnosticInvestigation,,bool,,true,,,,,,,,,,,,,Electron microscopy diagnostic investigation,Electron microscopy diagnostic investigation (no/yes)
+Individuals,,,geneticTesting,,bool,,true,,,,,,,,,,,,,Genetic testing,genetic testing (no/yes)
+Individuals,,,immunofluorescenceNumberOfBiopsies,,int,,,,,,,,,,,,,,,Immunofluorescence: number of biopsies,Immunofluorescence: number of biopsies
+Individuals,,,electronMicroscopyNumberOfBiopsies,,int,,,,,,,,,,,,,,,Electron microscopy: number of biopsies,Electron microscopy: number of biopsies
+Individuals,,,numberOfAffectedGenes,,int,,,,,,,,,,,,,,,Number of affected genes,Number of affected genes
+Individuals,,,LongitudinalAssessments,,heading,,,,,,,,,,,,,,,Longitudinal Assessments,Section heading:Longitudinal Assessments
+Individuals,,,biopsy,,refback,,,,,Biopsies,,individual,,,,,,,,Links to multiple biopsy records,Reference to one or more biopsy records; a single biopsy is also allowed.
+Individuals,,,genes,,refback,,,,,Variants,,individual,,,,,,,,Links to multiple gene records,Reference to one or more gene records; a single gene is also allowed.
+Individuals,,,dcc,,heading,,,,,,,,,,,,,,,Diagnostic Curation Committee,Section heading: Diagnostic Curation Committee
+Individuals,,,thisDiagnosisRequiresSupportOrConfirmationFromDCC,,bool,,true,,,,,,,,,,,,,This diagnosis requires support or confirmation from a diagnostic curation committee,This diagnosis requires support or confirmation from a diagnostic curation committee (no/yes)
+Individuals,,,diagnosisConfirmedByDiagnosticCurationCommittee,,bool,,true,,,,,,,,,,,,,Diagnosis confirmed by diagnostic curation committee,Diagnosis confirmed by diagnostic curation committee
+Individuals,,,material,,heading,,,,,,,,,,,,,,,Patient materials,Section heading: Patient materials
+Individuals,,,patientMaterialStored,,bool,,,,,,,,,,,,,,,Patient material stored,Patient material stored (no/yes)
+Individuals,,,whatMaterialStored,,ontology,,,,,MaterialTypes,,,,,,,,,,What material stored,What material stored
+Individuals,,,detailsOfOtherMaterialsStored,,text,,,,,,,,,,,,,,,Details of other materials stored,Details of other materials stored
+Individuals,,,status,,heading,,,,,,,,,,,,,,,Patient status,Section heading: Patient status
+Individuals,,,patientStatus,,ontology,,true,,,PatientStatus,,,,,,,,,,Patient status,Patient status (alive/dead/consent withdrawn)
+Individuals,,,dateOfDeath,,date,,,,,,,,,,,,,,,Date of death,Date of death
+Variants,,,individual,,ref,,true,,,Individuals,,,,,,,,,,individual,belongs to individual
+Variants,,,kindOfGene,,ontology,,true,,,KindGenes,,,,,,,,,,Kind of gene,Kind of gene
+Variants,,,affectedGene,,ontology,,true,,,EBgenes,,,,,,,,,,Affected gene,Affected gene
+Variants,,,detailsOfOtherAffectedGene,,text,,,,,,,,,,,,,,,Details of other affected gene,Details of other affected gene
+Variants,,,referenceSequence,,ontology,,true,,,Transcripts,,,,,,,,,,Reference sequence,Reference sequence
+Variants,,,detailsOfOtherReferenceSequence,,,,,,,,,,,,,,,,,Details of other reference sequence,Details of other reference sequence
+Variants,,,cdnaofThisAffectedGene,,,,,,,,,,,,,,,,,cDNAof this affected gene,cDNAof this affected gene
+Variants,,,isTheSecondAlleleForThisGeneDifferent,,bool,,,,,,,,,,,,,,,Is the second allele for this gene different,Is the second allele for this gene different
+Variants,,,cdnaOfAllele2,,,,,,,,,,,,,,,,,cDNA of allele 2,cDNA of allele 2
+Variants,,,variantId,,auto_id,1,true,,,,,,,,,,,,,,
